@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Третья кт по компонентам</title>
+    <link rel="stylesheet" href="kt3.css">
+    <script data-src="Kt3.js"></script>
+
+  
+  </head>
+   <body>
+    <script>
+        customElements.define('card-component', class extends HTMLElement {
+    connectedCallback() {
+      this.attachShadow({mode: 'open'});
+      this.shadowRoot.innerHTML = `
+      <div> Заголовок:
+        <slot name="header"></slot>
+      </div>
+      <div> Содержание:
+        <slot name="content"></slot>
+      </div>
+      <fieldset>
+        <legend> Прочее </legend>
+        <slot></slot>
+      </fieldset>
+      `;
+    }
+  });
+    </script>
+
+
+
+
+<card-component>
+  <div> <img src="images/pumpkin3.png" class="pumpkinimg" alt="Изображение карточки 1"> </div>
+  <span slot="header"> Злая тыква</span>
+  <span slot="content">БУУУУУУУУ</span>
+  <div>Муа-ха-ха-ха-ха</div>
+</card-component>
+    
+            <card-component>
+                <div> <img src="images/pumpkin1.png" class="pumpkinimg" alt="Изображение карточки 1"> </div>
+                <span slot="header">Хелуинское настроение</span>
+                <span slot="content">БУУУУУУУУ</span>
+                <div>Мье-хе-хе-хе-хе</div>
+              </card-component>
+
+              <card-component>
+                <div>
+                  <span slot="header">
+                    <h2>Заголовок карточки 1</h2></span>
+                    <span slot="content">
+                      <p>Текстовое содержание карточки 1</p> </span>
+                  <img src="images\pumpkin2.png" class="pumpkinimg" alt="Изображение карточки 2">
+                </div>
+              </card-component>
+
+              <card-component></card-component>
+
+   </body>
+</html>
